@@ -10,3 +10,4 @@ D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.dll
 D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\refint\ExpenseTracker.Core.dll
 D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.pdb
 D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ref\ExpenseTracker.Core.dll
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.sourcelink.json

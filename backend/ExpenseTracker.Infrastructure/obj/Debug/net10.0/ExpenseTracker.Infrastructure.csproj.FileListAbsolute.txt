@@ -15,3 +15,4 @@ D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\refint\Expens
 D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.pdb
 D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.genruntimeconfig.cache
 D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ref\ExpenseTracker.Infrastructure.dll
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.sourcelink.json
