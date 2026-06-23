@@ -302,6 +302,7 @@ export default function Dashboard() {
                     {data.recentTransactions.filter(t => t.type === 'Expense').length === 0 && (
                       <tr><td colSpan={4} className="text-center text-muted py-5">No expenses yet.</td></tr>
                     )}
+                    // Only showing recent expenses, so income transactions are filtered out. View All button takes you to transactions page where you can see everything.
                   </tbody>
                 </table>
               </div>
