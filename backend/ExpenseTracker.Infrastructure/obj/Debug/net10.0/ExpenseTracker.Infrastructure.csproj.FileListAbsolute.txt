@@ -1,0 +1,17 @@
+D:\Tracker\backend\ExpenseTracker.Infrastructure\bin\Debug\net10.0\ExpenseTracker.Infrastructure.deps.json
+D:\Tracker\backend\ExpenseTracker.Infrastructure\bin\Debug\net10.0\ExpenseTracker.Infrastructure.runtimeconfig.json
+D:\Tracker\backend\ExpenseTracker.Infrastructure\bin\Debug\net10.0\ExpenseTracker.Infrastructure.dll
+D:\Tracker\backend\ExpenseTracker.Infrastructure\bin\Debug\net10.0\ExpenseTracker.Infrastructure.pdb
+D:\Tracker\backend\ExpenseTracker.Infrastructure\bin\Debug\net10.0\ExpenseTracker.Core.dll
+D:\Tracker\backend\ExpenseTracker.Infrastructure\bin\Debug\net10.0\ExpenseTracker.Core.pdb
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.csproj.AssemblyReference.cache
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.AssemblyInfoInputs.cache
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.AssemblyInfo.cs
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseT.546500FC.Up2Date
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.dll
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\refint\ExpenseTracker.Infrastructure.dll
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.pdb
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ExpenseTracker.Infrastructure.genruntimeconfig.cache
+D:\Tracker\backend\ExpenseTracker.Infrastructure\obj\Debug\net10.0\ref\ExpenseTracker.Infrastructure.dll

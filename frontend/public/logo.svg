@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <filter id="logo-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#d4e8dc" flood-opacity="0.85"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#ffffff" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#5f7d6b" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="bar-a" x1="32" y1="10" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4a6356"/>
+      <stop offset="50%" stop-color="#9ab5a6"/>
+      <stop offset="100%" stop-color="#4a6356"/>
+    </linearGradient>
+    <linearGradient id="bar-b" x1="32" y1="10" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4a6356"/>
+      <stop offset="50%" stop-color="#b0cbb8"/>
+      <stop offset="100%" stop-color="#4a6356"/>
+    </linearGradient>
+    <linearGradient id="bar-c" x1="32" y1="10" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4a6356"/>
+      <stop offset="50%" stop-color="#8aab99"/>
+      <stop offset="100%" stop-color="#4a6356"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#logo-glow)" transform="translate(32 32)">
+    <rect x="-4.25" y="-22" width="8.5" height="44" rx="4.25" fill="url(#bar-a)" transform="rotate(0)"/>
+    <rect x="-4.25" y="-22" width="8.5" height="44" rx="4.25" fill="url(#bar-b)" transform="rotate(60)"/>
+    <rect x="-4.25" y="-22" width="8.5" height="44" rx="4.25" fill="url(#bar-c)" transform="rotate(-60)"/>
+  </g>
+</svg>

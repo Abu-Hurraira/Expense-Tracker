@@ -1,0 +1,12 @@
+D:\Tracker\backend\ExpenseTracker.Core\bin\Debug\net10.0\ExpenseTracker.Core.deps.json
+D:\Tracker\backend\ExpenseTracker.Core\bin\Debug\net10.0\ExpenseTracker.Core.dll
+D:\Tracker\backend\ExpenseTracker.Core\bin\Debug\net10.0\ExpenseTracker.Core.pdb
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.csproj.AssemblyReference.cache
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.AssemblyInfoInputs.cache
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.AssemblyInfo.cs
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.csproj.CoreCompileInputs.cache
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.dll
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\refint\ExpenseTracker.Core.dll
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ExpenseTracker.Core.pdb
+D:\Tracker\backend\ExpenseTracker.Core\obj\Debug\net10.0\ref\ExpenseTracker.Core.dll
