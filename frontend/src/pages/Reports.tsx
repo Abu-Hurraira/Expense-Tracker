@@ -10,6 +10,7 @@ import TrendChartTooltip from '../components/TrendChartTooltip';
 import { CHART_UI } from '../utils/chartColors';
 import {
   buildDailySpendingSeries,
+  buildWeeklySpendingSeries,
   dailySpendingYMax,
   dailySpendingYTicks,
 } from '../utils/dailySpendingChart';
@@ -74,6 +75,9 @@ export default function Reports() {
   }));
 
   const barCount = categoryData.length;
+  const weeklySeries = buildWeeklySpendingSeries(report.dailySpending, month, year);
+  const weeklyYMax = dailySpendingYMax(weeklySeries);
+  const weeklyYTicks = dailySpendingYTicks(weeklyYMax);
   const categoryBarSize = barCount <= 4 ? 36 : barCount <= 8 ? 28 : 22;
   const categoryBarGap = 16;
   const categoryXPadding =
@@ -93,7 +97,9 @@ export default function Reports() {
   const dailyTooltip = <TrendChartTooltip valueFormatter={v => fmt(v)} />;
   const xTickInterval = Math.max(0, Math.floor(dailySeries.length / 6) - 1);
 
-  const remaining = report.netBalance;
+  const remaining = report.netBalance - report.totalExpenses;
+
+  const weeklyTooltip = <TrendChartTooltip valueFormatter={v => fmt(v)} />;
 
   return (
     <div className="reports-page animate-fade-up">
@@ -170,7 +176,6 @@ export default function Reports() {
                   <Bar
                     dataKey="amount"
                     fill={CHART_UI.fillMid}
-                    radius={[8, 8, 0, 0]}
                     activeBar={{ fill: CHART_UI.line, opacity: 0.95 }}
                   />
                 </BarChart>
@@ -242,6 +247,67 @@ export default function Reports() {
         </div>
       </div>
 
+      <div className="fin-card reports-chart-card reports-weekly-card mb-4">
+        <div className="fin-card-title"><span>Weekly Spending</span></div>
+        <div className="reports-chart-body reports-chart-body-tall reports-weekly-area-wrap">
+          <ResponsiveContainer width="100%" height={300} initialDimension={{ width: 640, height: 300 }}>
+            <AreaChart
+              data={weeklySeries}
+              margin={{ top: 20, right: 20, left: 4, bottom: 8 }}
+            >
+              <defs>
+                <linearGradient id="reportWeeklyMountainGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={CHART_UI.fillTop} stopOpacity={0.58} />
+                  <stop offset="40%" stopColor={CHART_UI.fillMid} stopOpacity={0.22} />
+                  <stop offset="100%" stopColor={CHART_UI.fillMid} stopOpacity={0.02} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid
+                stroke={chartTheme.grid}
+                strokeDasharray="5 5"
+                vertical={false}
+                horizontal
+              />
+              <XAxis
+                dataKey="shortLabel"
+                tick={{ fontSize: 11, fill: chartTheme.tick }}
+                axisLine={false}
+                tickLine={false}
+                interval={0}
+                dy={8}
+                height={36}
+              />
+              <YAxis
+                domain={[0, weeklyYMax]}
+                ticks={weeklyYTicks}
+                tick={{ fontSize: 11, fill: chartTheme.tick }}
+                axisLine={false}
+                tickLine={false}
+                width={48}
+                tickFormatter={v => (v >= 1000 ? `${Math.round(v / 1000)}k` : String(v))}
+              />
+              <Tooltip content={weeklyTooltip} cursor={false} />
+              <Area
+                type="monotone"
+                dataKey="spent"
+                name="Spent"
+                stroke={CHART_UI.line}
+                strokeWidth={2.5}
+                fill="url(#reportWeeklyMountainGrad)"
+                dot={false}
+                isAnimationActive={false}
+                activeDot={{
+                  r: 6,
+                  fill: '#fff',
+                  stroke: CHART_UI.line,
+                  strokeWidth: 2.5,
+                }}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
       <div className="fin-card reports-chart-card reports-daily-card">
         <div className="fin-card-title"><span>Daily Spending</span></div>
         <div className="reports-chart-body reports-chart-body-tall reports-daily-line-wrap">
@@ -252,14 +318,14 @@ export default function Reports() {
             >
               <defs>
                 <linearGradient id="reportDailyMountainGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor={CHART_UI.fillTop} stopOpacity={0.55} />
-                  <stop offset="45%" stopColor={CHART_UI.fillMid} stopOpacity={0.28} />
-                  <stop offset="100%" stopColor={CHART_UI.fillMid} stopOpacity={0.02} />
+                  <stop offset="0%" stopColor={CHART_UI.fillTop} stopOpacity={0.62} />
+                  <stop offset="35%" stopColor={CHART_UI.fillMid} stopOpacity={0.18} />
+                  <stop offset="100%" stopColor={CHART_UI.fillMid} stopOpacity={0.04} />
                 </linearGradient>
               </defs>
               <CartesianGrid
                 stroke={chartTheme.grid}
-                strokeDasharray="6 6"
+                strokeDasharray="5 5"
                 vertical={false}
                 horizontal
               />
@@ -285,14 +351,14 @@ export default function Reports() {
                 type="monotone"
                 dataKey="spent"
                 name="Spent"
-                stroke={CHART_UI.line}
-                strokeWidth={2.5}
+                stroke={CHART_UI.lineDark}
+                strokeWidth={3}
                 fill="url(#reportDailyMountainGrad)"
                 dot={false}
                 activeDot={{
                   r: 6,
                   fill: '#fff',
-                  stroke: CHART_UI.line,
+                  stroke: CHART_UI.lineDark,
                   strokeWidth: 2.5,
                 }}
               />

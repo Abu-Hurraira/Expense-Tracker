@@ -1,10 +1,18 @@
-import { eachDayOfInterval, endOfMonth, format, startOfMonth } from 'date-fns';
+import { eachDayOfInterval, endOfMonth, format, startOfMonth, eachWeekOfInterval, endOfWeek, startOfWeek, min } from 'date-fns';
 
 export type DailySpendingPoint = {
   date: string;
   label: string;
   spent: number;
   tooltipDate: string;
+};
+
+export type WeeklySpendingPoint = {
+  weekStart: string;
+  label: string;
+  shortLabel: string;
+  spent: number;
+  tooltipRange: string;
 };
 
 export function buildDailySpendingSeries(
@@ -29,7 +37,37 @@ export function buildDailySpendingSeries(
   });
 }
 
-export function dailySpendingYMax(points: DailySpendingPoint[]): number {
+export function buildWeeklySpendingSeries(
+  daily: { date: string; amount: number }[],
+  month: number,
+  year: number,
+): WeeklySpendingPoint[] {
+  const byDate = Object.fromEntries(
+    daily.map(d => [d.date.slice(0, 10), Number(d.amount)]),
+  );
+  const monthStart = startOfMonth(new Date(year, month - 1));
+  const monthEnd = endOfMonth(monthStart);
+  const weekStarts = eachWeekOfInterval({ start: monthStart, end: monthEnd }, { weekStartsOn: 1 });
+
+  return weekStarts.map(start => {
+    const end = min([endOfWeek(start, { weekStartsOn: 1 }), monthEnd]);
+    const days = eachDayOfInterval({ start, end });
+    const total = days.reduce((sum, day) => {
+      const key = format(day, 'yyyy-MM-dd');
+      return sum + Number(byDate[key] ?? 0);
+    }, 0);
+
+    return {
+      weekStart: format(start, 'yyyy-MM-dd'),
+      label: `${format(start, 'd MMM')} - ${format(end, 'd MMM')}`,
+      shortLabel: format(start, 'd MMM'),
+      spent: total,
+      tooltipRange: `${format(start, 'MMM dd')} – ${format(end, 'MMM dd')}`,
+    };
+  });
+}
+
+export function dailySpendingYMax(points: { spent: number }[]): number {
   const max = Math.max(...points.map(p => p.spent), 0);
   if (max <= 0) return 100;
   if (max <= 300) return 300;

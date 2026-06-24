@@ -137,8 +137,8 @@ export default function Dashboard() {
             </div>
             <div className="card-body px-2 px-sm-4 pb-4 pt-2">
               <div className="dash-trend-chart-wrap">
-                <ResponsiveContainer width="100%" height={300}>
-                  <ComposedChart data={expenseTrend} margin={{ top: 16, right: 20, left: 8, bottom: 8 }}>
+                <ResponsiveContainer width="100%" height={300} initialDimension={{ width: 640, height: 300 }}>
+                  <ComposedChart data={expenseTrend} margin={{ top: 16, right: 20, left: 8, bottom: 24 }}>
                     <defs>
                       <linearGradient id="dashSpentGrad" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stopColor={CHART_UI.fillTop} stopOpacity={0.45} />
@@ -161,9 +161,10 @@ export default function Dashboard() {
                     <XAxis
                       dataKey="name"
                       tick={{ fontSize: 12, fill: chartTheme.tick }}
-                      axisLine={{ stroke: chartTheme.grid, strokeWidth: 1 }}
+                      axisLine={false}
                       tickLine={false}
-                      dy={8}
+                      dy={10}
+                      height={44}
                     />
                     <YAxis
                       domain={[0, trendYMax]}
@@ -175,13 +176,14 @@ export default function Dashboard() {
                     />
                     <Tooltip content={trendTooltip} cursor={false} />
                     <Area
-                      type="natural"
+                      type="monotone"
                       dataKey="spent"
                       name="Expenses"
                       stroke={CHART_UI.line}
                       strokeWidth={2.5}
                       fill="url(#dashSpentGrad)"
                       dot={false}
+                      isAnimationActive={false}
                       activeDot={{
                         r: 7,
                         fill: '#fff',
@@ -190,12 +192,13 @@ export default function Dashboard() {
                       }}
                     />
                     <Line
-                      type="natural"
+                      type="monotone"
                       dataKey="income"
                       name="Income"
                       stroke="#b0b8b4"
                       strokeWidth={2.5}
                       dot={false}
+                      isAnimationActive={false}
                       activeDot={{
                         r: 6,
                         fill: '#fff',
@@ -228,9 +231,20 @@ export default function Dashboard() {
             <div className="card-body px-4 pb-4 d-flex flex-column">
               <div className="row align-items-center g-3 flex-grow-1">
                 <div className="col-6 position-relative" style={{ minHeight: 200 }}>
-                  <ResponsiveContainer width="100%" height={200}>
+                  <ResponsiveContainer width="100%" height={200} initialDimension={{ width: 280, height: 200 }}>
                     <PieChart>
-                      <Pie data={categoryData} dataKey="amount" nameKey="categoryName" cx="50%" cy="50%" innerRadius={55} outerRadius={80} paddingAngle={3} strokeWidth={0}>
+                      <Pie
+                        data={categoryData}
+                        dataKey="amount"
+                        nameKey="categoryName"
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={55}
+                        outerRadius={80}
+                        paddingAngle={3}
+                        strokeWidth={0}
+                        isAnimationActive={false}
+                      >
                         {categoryData.map((_, i) => <Cell key={i} fill={CHART_GRAYS[i % CHART_GRAYS.length]} />)}
                       </Pie>
                     </PieChart>

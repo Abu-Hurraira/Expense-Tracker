@@ -14,12 +14,13 @@ export default function TrendChartTooltip({
   const items = payload.filter(entry => entry.dataKey === 'spent');
   if (!items.length) return null;
 
-  const row = items[0]?.payload as { tooltipDate?: string } | undefined;
+  const row = items[0]?.payload as { tooltipDate?: string; tooltipRange?: string } | undefined;
+  const tooltipLabel = row?.tooltipRange ?? row?.tooltipDate;
   const fmt = (v: number) => (valueFormatter ? valueFormatter(v) : String(v));
 
   return (
     <div className="trend-chart-tooltip">
-      {row?.tooltipDate && <p className="trend-chart-tooltip-date">{row.tooltipDate}</p>}
+      {tooltipLabel && <p className="trend-chart-tooltip-date">{tooltipLabel}</p>}
       {items.map(entry => (
         <p key={String(entry.dataKey)} className="trend-chart-tooltip-value mb-1">
           <span className="trend-chart-tooltip-dot" style={{ background: entry.color }} />

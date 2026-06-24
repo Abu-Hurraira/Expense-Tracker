@@ -672,9 +672,16 @@ body {
 /* Reference-style dual-line chart */
 .dashboard-page .dash-trend-chart-wrap {
   border-radius: 0.875rem;
-  padding: 0.75rem 0.5rem 0.25rem;
+  padding: 0.75rem 0.5rem 0.5rem;
   background: #ffffff;
   border: 1px solid rgba(232, 235, 230, 0.9);
+  height: 300px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.dashboard-page .dash-trend-chart-wrap .recharts-responsive-container {
+  min-height: 300px;
 }
 
 .dash-chart-legend-row {
@@ -2120,6 +2127,28 @@ body {
 
 [data-theme="dark"] .reports-page .reports-daily-line-wrap {
   background: rgba(37, 43, 39, 0.45);
+}
+
+.reports-page .reports-weekly-area-wrap {
+  padding: 0.5rem 0.75rem 0.25rem;
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.35);
+  height: 300px;
+  min-height: 300px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.reports-page .reports-weekly-area-wrap .recharts-responsive-container {
+  min-height: 300px;
+}
+
+[data-theme="dark"] .reports-page .reports-weekly-area-wrap {
+  background: rgba(37, 43, 39, 0.45);
+}
+
+.reports-page .reports-weekly-card {
+  min-height: 380px;
 }
 
 .reports-page .reports-daily-card {
