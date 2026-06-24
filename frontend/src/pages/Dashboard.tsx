@@ -48,8 +48,9 @@ export default function Dashboard() {
   const fmt = (n: number) => formatCurrency(n, currency);
   const trendTooltip = <TrendChartTooltip valueFormatter={v => fmt(v)} />;
   const spent = data.monthlyExpenses;
-  const remaining = data.totalBalance;
-  const totalFunds = remaining + spent;
+  const totalBalance = data.totalBalance;
+  const remaining = totalBalance - spent;
+  const totalFunds = totalBalance;
 
   const expenseTrend = buildLast6MonthsTrend(data.monthlyTrend);
   const trendYMax = expenseTrendYMax(expenseTrend);

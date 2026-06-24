@@ -38,18 +38,36 @@ export default function Accounts() {
       if (wallet) {
         await accountApi.setBalance(wallet.accountId, Number(balance));
         setMessage('Balance saved successfully!');
-        setBalancePulse(true);
-        setTimeout(() => setBalancePulse(false), 700);
       } else {
         await accountApi.create({ name: 'Wallet', type: 'Cash', balance: Number(balance) });
         setMessage('Wallet created with your balance!');
-        setBalancePulse(true);
-        setTimeout(() => setBalancePulse(false), 700);
       }
+      setBalancePulse(true);
+      setTimeout(() => setBalancePulse(false), 700);
       load();
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { message?: string } } })?.response?.data?.message;
       setMessage(msg || 'Failed to save balance. Please try again.');
+      setIsError(true);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteBalance = async () => {
+    if (!wallet) return;
+    setSaving(true);
+    setMessage('');
+    setIsError(false);
+    try {
+      await accountApi.setBalance(wallet.accountId, 0);
+      setMessage('Balance deleted successfully!');
+      setBalancePulse(true);
+      setTimeout(() => setBalancePulse(false), 700);
+      load();
+    } catch (err: unknown) {
+      const msg = (err as { response?: { data?: { message?: string } } })?.response?.data?.message;
+      setMessage(msg || 'Failed to delete balance. Please try again.');
       setIsError(true);
     } finally {
       setSaving(false);
@@ -103,6 +121,15 @@ export default function Accounts() {
               ) : 'Save Balance'}
             </button>
           </form>
+
+          <button
+            type="button"
+            className="btn btn-fin-danger w-100 mt-3"
+            onClick={handleDeleteBalance}
+            disabled={saving || !wallet}
+          >
+            {saving ? 'Deleting...' : 'Delete Balance'}
+          </button>
         </div>
       </div>
 
