@@ -1,6 +1,8 @@
-import type { TooltipProps } from 'recharts';
+import type { TooltipContentProps } from 'recharts';
 
-type TrendChartTooltipProps = TooltipProps<number, string> & {
+type RechartsTooltipProps = Partial<Pick<TooltipContentProps<number, string>, 'active' | 'payload' | 'label' | 'coordinate' | 'accessibilityLayer' | 'activeIndex'>>;
+
+type TrendChartTooltipProps = RechartsTooltipProps & {
   valueFormatter?: (value: number) => string;
 };
 

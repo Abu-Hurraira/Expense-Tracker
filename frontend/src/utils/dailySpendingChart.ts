@@ -1,4 +1,4 @@
-import { eachDayOfInterval, endOfMonth, format, startOfMonth, eachWeekOfInterval, endOfWeek, startOfWeek, min } from 'date-fns';
+import { eachDayOfInterval, endOfMonth, format, startOfMonth, eachWeekOfInterval, endOfWeek, min } from 'date-fns';
 
 export type DailySpendingPoint = {
   date: string;

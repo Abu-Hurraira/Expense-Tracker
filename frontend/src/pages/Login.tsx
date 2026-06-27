@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
 import AppLogo from '../components/AppLogo';
 import { APP_NAME, APP_TAGLINE } from '../constants/brand';
 
 export default function Login() {
+  const navigate = useNavigate();
   const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +18,7 @@ export default function Login() {
     setLoading(true);
     try {
       await login(username, password);
+      navigate('/app', { replace: true, state: { authMessage: 'Signed in successfully' } });
     } catch {
       setError('Invalid username or password');
     } finally {

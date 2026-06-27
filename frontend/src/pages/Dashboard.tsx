@@ -22,6 +22,7 @@ export default function Dashboard() {
   const { currency } = useTheme();
   const chartTheme = useChartTheme();
   const location = useLocation();
+  const authMessage = (location.state as { authMessage?: string } | null)?.authMessage;
   const [data, setData] = useState<DashboardSummary | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -69,8 +70,14 @@ export default function Dashboard() {
   const monthChange = prevMonthSpend > 0
     ? Math.round(((lastMonthSpend - prevMonthSpend) / prevMonthSpend) * 100)
     : null;
+
   return (
     <div className="dashboard-page">
+      {authMessage && (
+        <div className="alert alert-success animate-slide-down py-3 px-4 mb-4" role="alert">
+          <i className="bi bi-check-circle-fill me-2"></i>{authMessage}
+        </div>
+      )}
       <div className="row g-3 mb-4">
         <div className="col-sm-6 col-xl-4 animate-fade-up">
           <div className="card dash-hero-stat border-0 h-100">

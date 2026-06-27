@@ -1,6 +1,8 @@
-import type { TooltipProps } from 'recharts';
+import type { TooltipContentProps } from 'recharts';
 
-type CategoryBarTooltipProps = TooltipProps<number, string> & {
+type RechartsTooltipProps = Partial<Pick<TooltipContentProps<number, string>, 'active' | 'payload' | 'label' | 'coordinate' | 'accessibilityLayer' | 'activeIndex'>>;
+
+type CategoryBarTooltipProps = RechartsTooltipProps & {
   valueFormatter?: (value: number) => string;
   labelFormatter?: (label: string) => string;
 };

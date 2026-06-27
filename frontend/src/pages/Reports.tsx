@@ -192,7 +192,7 @@ export default function Reports() {
                 <p className="report-pie-eyebrow">Total spent by category</p>
                 <h3 className="report-pie-total">{fmt(report.totalExpenses)}</h3>
                 <ul className="report-pie-legend list-unstyled mb-0">
-                  {categoryData.map((c, i) => (
+                  {categoryData.map((c) => (
                     <li key={c.categoryName} className="report-pie-legend-item">
                       <span className="report-pie-swatch" style={{ background: c.solid }} aria-hidden="true" />
                       <span className="report-pie-legend-name text-truncate">{c.categoryName}</span>
@@ -231,7 +231,7 @@ export default function Reports() {
                         label={pieSegmentLabel}
                         labelLine={false}
                       >
-                        {categoryData.map((c, i) => (
+                        {categoryData.map((c) => (
                           <Cell key={c.categoryName} fill={c.fill} />
                         ))}
                       </Pie>
